@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="container">
+        <form method = "post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Author Name</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="author_name">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Genre</label>
+                <select class="form-select form-select-md mb-3" aria-label=".form-select-md example" name="genre">
+                    <option value="not selected">Select Genre</option>
+                    <option value="drama">Drama</option>
+                    <option value="love story">Love Story</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="science fiction">Science Fiction</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Title</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="title">
+            </div>
+            
+            <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+        </div>
+        </form>
+    </div>
+{% else %}
+    <div class="alert alert-success" role="alert">
+        <h3>Welcome!</h3>
+        <a href="signup/">Signup</a>
+        <a href="login/">Login</a>
+    </div>
+{% endif %}
+{% endblock %}
