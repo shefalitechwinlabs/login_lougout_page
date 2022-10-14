@@ -11,4 +11,4 @@ class RequestDemoAdmin(admin.ModelAdmin):
 
 @admin.register(Book)
 class RequestDemoAdmin(admin.ModelAdmin):
-  list_Books = ['title', 'author', 'genre']
+  list_Books = ['title', 'author', 'genre', 'publisher']

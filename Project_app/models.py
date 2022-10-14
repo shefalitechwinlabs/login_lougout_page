@@ -5,9 +5,12 @@ class Publisher(models.Model):
     publisher_name = models.CharField(max_length=30,null=True)
     country = models.CharField(max_length=50,null=True)
 
+    def __str__(self):
+        return self.publisher_name
+
 class Author(models.Model):
     author_name = models.CharField(max_length=30)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.author_name
@@ -23,6 +26,7 @@ class Book(models.Model):
     genre = models.CharField(max_length=20,choices=choice)
     title = models.CharField(max_length=100)
     author = models.ManyToManyField(Author)
+    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.title
